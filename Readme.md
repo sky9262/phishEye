@@ -77,7 +77,7 @@ $ python3 phishEye.py
 :: Workflow ::
 </h3>
 <p align="center">
-<img src=".gif" alt="test gif"/>
+<img src="./img/test.gif" alt="test gif"/>
 </p>
 
 ## Available sites
