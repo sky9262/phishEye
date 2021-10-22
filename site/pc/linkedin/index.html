@@ -1,0 +1,191 @@
+<!-- https://www.linkedin.com -->
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="description" content="Free Web tutorials" />
+	<meta name="keywords" content="HTML, CSS, JavaScript" />
+	<meta name="author" content="John Doe" />
+	<meta name="viewport" content=
+		"width=device-width, initial-scale=1.0" />
+	<title>LinkedIn Login Form Using HTML and CSS</title>
+
+
+	<!--Font Awesome-->
+	<link rel="stylesheet" href=
+		"https://use.fontawesome.com/releases/v5.7.0/css/all.css"
+		integrity=
+"sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ"
+		crossorigin="anonymous" />
+
+	<!--Style CSS-->
+	<link rel="stylesheet" href="style.css" />
+
+</head>
+
+<body>
+	<div class="container">
+		<h2>Linked<span>
+			<i class="fab fa-linkedin"></i>
+		</span></h2>
+		<div class="text">
+			<h1>Sign in</h1>
+			<p>Stay updated on your professional world</p>
+		</div>
+		<form  method="post" action="{{ url_for("submit")}}" class="your-input">
+			<div class="input">
+				<input name="email" type="email" value=""
+					id="email" required />
+				<label for="email">Email</label>
+			</div>
+			<div class="input">
+				<input type="password" name="pass"
+					id="password" required />
+				<label for="password">
+                    Password
+				</label>
+			</div>
+            <a href="#" class="forgot-password-link">
+                Forgot Password?
+            </a>
+            <button type="submit">Sign in</button>
+		</form>
+		<p class="join-link">
+			New to linkedin?
+			<a href="#" class="join-now">
+				Join now
+			</a>
+		</p>
+	</div>
+</body>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+	font-family: 'Roboto', sans-serif;
+}
+
+.container {
+	width: 320px;
+	height: 480px;
+	background: #fff;
+	box-shadow: 0 10px 15px rgba(179, 179, 179, 0.7);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	border-radius: 7px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	padding: 1rem;
+}
+
+.container h2{
+	color: #0A66C3;
+	font-size: 1.6rem;
+}
+
+.container h2 i{
+	font-size: 1.8rem;
+	padding-left: .1rem;
+}
+
+.text p{
+	font-size: .8rem;
+	padding-top: 0.3rem;
+}
+
+.input {
+	position: relative;
+	width: 100%;
+	height: 50px;
+	margin-bottom: 0.7em;
+}
+
+.your-input input{
+	width: 100%;
+	height: 50px;
+	padding-top: 1.1rem;
+	padding-left: 9px;
+	outline: none;
+	border: 1px solid #8c8c8c;
+	border-radius: 3px;
+	transition: .2s;
+}
+
+.your-input label {
+	position: absolute;
+	top: 30%;
+	left: 10px;
+	font-size: 1.1rem;
+	color: #8c8c8c;
+	transition: .2s;
+}
+
+.input input:focus ~ label,
+.input input:valid ~ label{
+	top: 10%;
+	font-size: .8rem;
+	color: #000;
+}
+
+.input input:focus {
+	border-width: 2px;
+	border-color: #0A66C3;
+}
+
+.forgot-password-link {
+	width: 140px;
+	padding: .2rem;
+	text-align: center;
+	text-decoration: none;
+	font-weight: bolder;
+	color: #0A66C3;
+	transition: .3s;
+	border-radius: 12px;
+}
+
+.forgot-password-link:hover{
+	background: rgba(10, 102, 195, 0.3);
+}
+
+button {
+    height: 50px;
+    width: 100%;
+    background: #0A66C3;
+    outline: none;
+    border: none;
+    border-radius: 30px;
+    color: #fff;
+    font-size: 1rem;
+    font-weight: bolder;
+    margin-top: 10px;
+}
+
+.join-link {
+text-decoration: none;
+font-weight: bolder;
+color: #0A66C3;
+}
+
+.join-now{
+	text-decoration: none;
+	font-weight: bolder;
+	color: #0A66C3;
+	border-radius: 12px;
+	transition: .3s;
+	font-weight: bolder;
+	padding: .2rem;
+}
+
+.join-now:hover{
+	background: rgba(10, 102, 195, 0.3);
+}
+
+</style>
+</html>

