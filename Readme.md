@@ -1,7 +1,7 @@
 <!-- phishEye -->
 
 <p align="center">
-  <img src=".img/logo.png">
+  <img src="./img/logo.png">
 </p>
 
 <img title="Built With Love" src="https://forthebadge.com/images/badges/built-with-love.svg"></p>
