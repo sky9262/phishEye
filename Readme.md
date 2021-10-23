@@ -70,7 +70,7 @@ $ python3 phishEye.py
 - **Note:** Username/Password will saved in captured.db
 
 ### Here `-s`, `-d` and `-p` are options :
-- `-s` --> site name (from <a href="https://github.com/sky9262/delete#:~:text=%3A%3A%20Workflow%20%3A%3A-,Available%20sites,-Click%20me%20to">available sites</a>) **(Default: facebook)**
+- `-s` --> site name (from <a href="https://github.com/sky9262/phishEye#:~:text=%3A%3A%20Workflow%20%3A%3A-,Available%20sites,-Click%20me%20to">available sites</a>) **(Default: facebook)**
 - `-d` --> device (like, PC or MOBILE) **(Default: PC)**
 - `-p` --> port number **(Default: 4444)**
 
