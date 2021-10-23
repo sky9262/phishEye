@@ -14,6 +14,7 @@
 
 <p align="center">A beginners friendly, Automated phishing tool</p>
 
+<p align="center"><strong>phishEye</strong> is a ultimate phishing tool in python. Includes popular websites like facebook, twitter, instagram, linkedin, github, dropbox and many others. Created with Flask and custom templates and tunneled with ngrok.</p>
 
 <h3><p align="center">Disclaimer</p></h3>
 
