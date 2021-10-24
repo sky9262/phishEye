@@ -87,26 +87,32 @@ $ python3 phishEye.py
 <details>
 <summary>PC</summary>
 <ol>
+
+[1] amazon
   
-[1] deviantart
+[2] deviantart
   
-[2] dropbox
+[3] dropbox
   
-[3] ebay
+[4] ebay
   
-[4] facebook
+[5] facebook
   
-[5] github
+[6] github
   
-[6] gitlab
+[7] gitlab
   
-[7] google
+[8] google
   
-[8] linkedin
+[9] instagram
   
-[9] messenger
+[10] linkedin
   
-[10] paypal
+[11] messenger
+  
+[12] paypal
+  
+[13] twitter
   
 </ol>
 </details>  
@@ -114,23 +120,29 @@ $ python3 phishEye.py
 <summary>MOBILE</summary>
 <ol>
   
-[1] deviantart
+[1] amazon
   
-[2] dropbox
+[2] deviantart
   
-[3] ebay
+[3] dropbox
   
-[4] facebook
+[4] ebay
   
-[5] github
+[5] facebook
   
-[6] gitlab
+[6] github
   
-[7] google
+[7] gitlab
   
-[8] linkedin
+[8] google
   
-[9] paypal  
+[9] instagram
+  
+[10] linkedin
+  
+[11] paypal
+  
+[12] twitter 
 
 </ol>
 </details>
