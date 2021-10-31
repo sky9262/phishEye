@@ -54,7 +54,6 @@ try:
 
    def start_ngrok(port):
     from pyngrok import ngrok
-    ngrok.set_auth_token("1yjVokuu5hZQOttJsRsitUzAtI1_6qaqFCMq6WWppniFa63pf")
     url = ngrok.connect(port,bind_tls=True).public_url
     print(' [ * ] Public address: ', url)
 
