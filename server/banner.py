@@ -21,7 +21,7 @@ def PrintBanner():
     {blue}██║     ██║  ██║██║███████║██║  ██║  ███████╗   ██║   ███████╗{reset}
     {pink}╚═╝     ╚═╝  ╚═╝╚═╝╚══════╝╚═╝  ╚═╝  ╚══════╝   ╚═╝   ╚══════╝{reset}
     {bright}Version {green}{ver}{white}
-    '''.format(ver=1.0, red=Fore.RED, yellow=Fore.YELLOW, green=Fore.GREEN,
+    '''.format(ver=1.2, red=Fore.RED, yellow=Fore.YELLOW, green=Fore.GREEN,
     blue=Fore.BLUE, pink=Fore.MAGENTA, white=Fore.WHITE, reset=Style.RESET_ALL, bright=Style.BRIGHT))
 
     time.sleep(2) 
