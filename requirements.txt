@@ -8,3 +8,5 @@ pyngrok==5.1.0
 PyYAML==6.0
 waitress==2.0.0
 Werkzeug==2.0.2
+requests==2.26.0
+urllib3==1.26.7
