@@ -49,7 +49,7 @@ $ git clone git@github.com:sky9262/phishEye.git
 
 - Change to cloned directory -
 ```
-$ cd zphisher
+$ cd phishEye
 ```
 
 - Install required modules to run `phishEye.py` -
