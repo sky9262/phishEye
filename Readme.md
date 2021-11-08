@@ -81,7 +81,7 @@ $ pip3 install -r requirements.txt
 :: Workflow ::
 </h3>
 <p align="center">
-<img src="./img/Preview.gif" alt="test gif"/>
+<img src="./img/Preview_v1.3.gif" alt="test gif"/>
 </p>
 
 ## Available sites
