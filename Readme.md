@@ -30,6 +30,7 @@ It only demonstrates "how phishing works". <b>You shall not misuse the informati
 
 - Latest and updated login pages.
 - Beginners friendly
+- Auto install all required modules (NEW)
 - Multiple tunneling options
   - Localhost
   - Ngrok
@@ -53,16 +54,17 @@ $ git clone git@github.com:sky9262/phishEye.git
 $ cd phishEye
 ```
 
+- Now run `phishEye.py` -
+```
+$ python3 phishEye.py
+```
+
+### Install required modules if auto install is not working
 - Install required modules to run `phishEye.py` -
 ```
 $ pip3 install -r requirements.txt
 ```
 
-
-- Now run `phishEye.py` -
-```
-$ python3 phishEye.py
-```
 
 ## Usage
 - By running `python3 phishEye.py`, you will be provided to choose options.
