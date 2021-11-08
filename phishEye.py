@@ -1,3 +1,33 @@
+import sys, socket
+import subprocess
+import pkg_resources
+
+def is_connected():
+    try:
+        host = socket.gethostbyname("1.1.1.1")
+        s = socket.create_connection((host, 80), 2)
+        s.close()
+        return True
+    except:
+        pass
+    return False
+if(is_connected()):
+    requirements = set()
+
+    with open('requirements.txt') as f:
+        for line in f:
+            requirements.add(line.replace("\n",""))
+
+    installed = {pkg.key for pkg in pkg_resources.working_set}
+    missing = requirements - installed
+
+    if missing:
+        print("Some modules are not installed.\nPlease wait, auto installing is running...")
+        python = sys.executable
+        subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
+else:
+    print("Some modules are not installed.\nPlease install from requirements.txt or connect with internet to auto install.")               
+
 try:
     import os
     import shutil
