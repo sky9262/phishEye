@@ -33,7 +33,7 @@ It only demonstrates "how phishing works". <b>You shall not misuse the informati
 - Multiple tunneling options
   - Localhost
   - Ngrok
-- Sort url (by: https://cutt.ly/ )
+- Phishing short url ( i.e.: https://m.facebook.com@is.gd/dyoOj9 )
 
 ### Requirements
 
