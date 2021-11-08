@@ -22,7 +22,7 @@ if(is_connected()):
     missing = requirements - installed
 
     if missing:
-        print("Some modules are not installed.\nPlease wait, auto installing is running...")
+        print("Checking for required modules.\nIt'll install automatically if any modules are not installed...")
         python = sys.executable
         subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
 else:
