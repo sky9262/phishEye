@@ -65,6 +65,7 @@ try:
             print(f" [ + ] Victim {len(victim_list)} IP: "+ victim_data["query"])
             print(f" [ + ] Victim {len(victim_list)} user-agent: "+ victim_data["useragent"])
             print(f" [ + ] Victim {len(victim_list)} continent: "+ victim_data["continent"])
+            print(f" [ + ] Victim {len(victim_list)} country: "+ victim_data["country"])
             print(f" [ + ] Victim {len(victim_list)} region name: "+ victim_data["regionName"])
             print(f" [ + ] Victim {len(victim_list)} city: "+ victim_data["city"])
             print(f" [ + ] Victim {len(victim_list)} district: "+ victim_data["district"])
