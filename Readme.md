@@ -30,7 +30,7 @@ It only demonstrates "how phishing works". <b>You shall not misuse the informati
 
 - Latest and updated login pages.
 - Beginners friendly
-- Auto install all required modules (NEW)
+- Auto install all required modules
 - Multiple tunneling options
   - Localhost
   - Ngrok
