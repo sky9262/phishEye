@@ -35,6 +35,7 @@ It only demonstrates "how phishing works". <b>You shall not misuse the informati
   - Localhost
   - Ngrok
 - Phishing short url ( i.e.: https://m.facebook.com@is.gd/dyoOj9 )
+- Victim information (like, IP,user-agent,continent,country,region name,city,district,zip code,latitude-longitude and ISP)
 
 ### Requirements
 
