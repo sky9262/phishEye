@@ -3,7 +3,7 @@ try:
    from flask import Flask, request, render_template , redirect
    import argparse
    from waitress import serve
-   import os, socket, os.path, subprocess
+   import os, socket, os.path, subprocess, json
    from banner import *
    os.system('cls' if os.name == 'nt' else 'clear')
    PrintBanner()
@@ -102,7 +102,7 @@ try:
          if os.name == "posix":
             get_link = "curl -d '{\"longURL\":\""+url+ "\"}' -H \"Content-Type: application/json\" -X POST https://yb.gd/short"
             r = subprocess.getoutput(get_link)
-            r = r["shortURL"]
+            r = json.loads(r)["shortURL"]
          else:
             x = requests.get(shortner)
             r = x.text
