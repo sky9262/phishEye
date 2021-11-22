@@ -14,17 +14,17 @@
 
 <p align="center">A beginners friendly, Automated phishing tool</p>
 
-<p align="center"><strong>phishEye</strong> is a ultimate phishing tool in python. Includes popular websites like facebook, twitter, instagram, linkedin, github, dropbox and many others. Created with Flask and custom templates and tunneled with ngrok.</p>
+<p align="center"><strong>phishEye</strong> is a ultimate phishing tool in python. Includes popular websites like Facebook, Twitter, Instagram, LinkedIn, GitHub, Dropbox, and many others. Created with Flask and custom templates and tunneled with ngrok.</p>
 
 <h3><p align="center">Disclaimer</p></h3>
 
 <i>Any actions and or activities related to <b>phishEye</b> is solely your responsibility. The misuse of this toolkit can result in <b>criminal charges</b> brought against the persons in question. <b>The contributors will not be held responsible</b> in the event any criminal charges be brought against any individuals misusing this toolkit to break the law.
 
-<b>This toolkit contains materials that can be potentially damaging or dangerous for social media</b>. Refer to the laws in your province/country before accessing, using,or in any other way utilizing this in a wrong way.
+<b>This toolkit contains materials that can be potentially damaging or dangerous for social media</b>. Refer to the laws in your province/country before accessing, using, or in any other way utilizing this in a wrong way.
 
 <b>This Tool is made for educational purposes only</b>. Do not attempt to violate the law with anything contained here. <b>If this is your intention, then Get the hell out of here</b>!
 
-It only demonstrates "how phishing works". <b>You shall not misuse the information to gain unauthorized access to someones social media</b>. However you may try out this at your own risk.</i>
+It only demonstrates "how phishing works". <b>You shall not misuse the information to gain unauthorized access to someone's social media</b>. However, you may try out this at your own risk.</i>
 
 ### Features
 
@@ -39,7 +39,7 @@ It only demonstrates "how phishing works". <b>You shall not misuse the informati
 
 ### Requirements
 
-**`phishEye`** requires following programs to run properly - 
+**`phishEye`** requires the following programs to run properly - 
 - `python3`
 - `pip3`
 
@@ -50,7 +50,7 @@ It only demonstrates "how phishing works". <b>You shall not misuse the informati
 $ git clone https://www.github.com/sky9262/phishEye.git
 ```
 
-- Change to cloned directory -
+- Change to the cloned directory -
 ```
 $ cd phishEye
 ```
@@ -60,7 +60,7 @@ $ cd phishEye
 $ python3 phishEye.py
 ```
 
-### Install required modules if auto install is not working
+### Install required modules if auto-install is not working
 - Install required modules to run `phishEye.py` -
 ```
 $ pip3 install -r requirements.txt
@@ -71,7 +71,7 @@ $ pip3 install -r requirements.txt
 - By running `python3 phishEye.py`, you will be provided to choose options.
 - **OR**
 - You can run it in one line `python3 phishEye.py -s facebook -d pc -p 4444`
-- **Note:** Username/Password will saved in captured.db
+- **Note:** Username/Password will be saved in captured.db
 
 ### Here `-s`, `-d` and `-p` are options :
 - `-s` --> site name (from <a href="https://github.com/sky9262/phishEye#:~:text=%3A%3A%20Workflow%20%3A%3A-,Available%20sites,-Click%20me%20to">available sites</a>) **(Default: facebook)**
@@ -92,31 +92,31 @@ $ pip3 install -r requirements.txt
 <summary>PC</summary>
 <ol>
 
-[1] amazon
+[1] Amazon
   
-[2] deviantart
+[2] DeviantArt
   
-[3] dropbox
+[3] Dropbox
   
-[4] ebay
+[4] eBay
   
-[5] facebook
+[5] Facebook
   
-[6] github
+[6] Github
   
-[7] gitlab
+[7] GitLab
   
-[8] google
+[8] Google
   
-[9] instagram
+[9] Instagram
   
-[10] linkedin
+[10] LinkedIn
   
-[11] messenger
+[11] Messenger
   
-[12] paypal
+[12] PayPal
   
-[13] twitter
+[13] Twitter
   
 </ol>
 </details>  
@@ -124,29 +124,29 @@ $ pip3 install -r requirements.txt
 <summary>MOBILE</summary>
 <ol>
   
-[1] amazon
+[1] Amazon
   
-[2] deviantart
+[2] DeviantArt
   
-[3] dropbox
+[3] Dropbox
   
-[4] ebay
+[4] eBay
   
-[5] facebook
+[5] Facebook
   
-[6] github
+[6] Github
   
-[7] gitlab
+[7] GitLab
   
-[8] google
+[8] Google
   
-[9] instagram
+[9] Instagram
   
-[10] linkedin
+[10] LinkedIn
   
-[11] paypal
+[11] PayPal
   
-[12] twitter 
+[12] Twitter 
 
 </ol>
 </details>
@@ -154,7 +154,7 @@ $ pip3 install -r requirements.txt
 
 
 <p align=center>
-  <a href="https://www.instagram.com/bhikan_deshmukh"><img title="Made in INDIA" src="https://img.shields.io/badge/MADE%20IN-INDIA-SCRIPT?colorA=%23ff8100&colorB=%23017e40&colorC=%23ff0000&style=for-the-badge"></a>
+  <a href="https://github.com/sky9262"><img title="Made in INDIA" src="https://img.shields.io/badge/MADE%20IN-INDIA-SCRIPT?colorA=%23ff8100&colorB=%23017e40&colorC=%23ff0000&style=for-the-badge"></a>
 </p>
   
 ### Thanks! Feel free to contribute.
