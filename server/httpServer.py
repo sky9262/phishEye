@@ -100,9 +100,9 @@ try:
          else:
             shortner = f'https://da.gd/s/?url={url}'
          if os.name == "posix":
-            get_link = "curl -d '{\"longURL\":\""+url+ "\"}' -H \"Content-Type: application/json\" -X POST https://yb.gd/short"
+            get_link = "curl -s -d '{\"longURL\":\""+url+ "\"}' -H \"Content-Type: application/json\" -X POST https://yb.gd/short"
             r = subprocess.getoutput(get_link)
-            r = json.loads(r)["shortURL"]
+            r = r.split("\":\"")[1].replace("\"","").replace("}","")
          else:
             x = requests.get(shortner)
             r = x.text
